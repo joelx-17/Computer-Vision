@@ -20,11 +20,10 @@ train_data = DataLoader(
     shuffle=True
 )
 
-
 device = torch.device("cpu")
 
 model = CNN().to(device)
-model.load_state_dict(torch.load("models/model.pth", map_location=device,weights_only=True))
+#model.load_state_dict(torch.load("models/model.pth", map_location=device,weights_only=True))
 loss_criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
