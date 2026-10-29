@@ -5,17 +5,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 
 #Import imgs
-img1 = cv2.imread(ROOT/"img/img1.png")
-img2 = cv2.imread(ROOT/"img/img2.png")
-img1 = cv2.resize(img1,(900,900))
-img2 = cv2.resize(img2,(900,900))
+img1 = cv2.imread(ROOT/"img/car1.png")
+img2 = cv2.imread(ROOT/"img/car2.png")
+#img1 = cv2.resize(img1,(900,900))
+#img2 = cv2.resize(img2,(900,900))
 if img1 is None or img2 is None:
     raise FileNotFoundError("Make sure import path is correct")
 
 g1 = cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)
 g2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
 
-orb = cv2.ORB_create(nfeatures=50000)
+orb = cv2.ORB_create(nfeatures=2000)
 
 matcher = cv2.BFMatcher(cv2.NORM_HAMMING)
 
@@ -44,7 +44,7 @@ pt2 = np.float32([kp2[m.trainIdx].pt for m in good]).reshape(-1,1,2)
 if(len(good)<4):
     raise ValueError("Homography estimation needs at least 4 good points.")
 
-H, mask = cv2.findHomography(pt1,pt2,cv2.RANSAC,5)
+H, mask = cv2.findHomography(pt1,pt2,cv2.RANSAC,2.0)
 
 if H is None or mask is None:
     raise RuntimeError("Homography Estimation failed")
