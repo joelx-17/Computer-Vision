@@ -1,0 +1,24 @@
+def classify(label):
+    match label:
+        case 0: 
+            return "Airplane"
+        case 1:
+            return "Automobile"
+        case 2: 
+            return "bird"
+        case 3:
+            return "cat"
+        case 4:
+            return "deer"
+        case 5:
+            return "dog"
+        case 6:
+            return "frog"
+        case 7:
+            return "horse"
+        case 8: 
+            return "ship"
+        case 9:
+            return "truck"
+        case _:
+            return "Invalid choice"
