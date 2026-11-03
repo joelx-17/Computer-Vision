@@ -44,7 +44,7 @@ with torch.no_grad():
   total=0
   image=img
   image = image.to(device)
-  lab=4
+  lab=5
   label = torch.tensor([4], dtype=torch.long)
   label = label.to(device)
   output = model(image.unsqueeze(0))
